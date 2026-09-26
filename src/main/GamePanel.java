@@ -47,9 +47,10 @@ public class GamePanel extends JPanel implements Runnable{
             // 1 UPDATE: update information such as character position
             update();
 
-
             // 2 Draw: draw the screen with the updated information
             repaint();
+
+
         }
         //Game LOOP
 
@@ -88,6 +89,7 @@ public class GamePanel extends JPanel implements Runnable{
 //
 //        }
 //        if(o==1){o=0;}else{o=1;}
+
         g2.dispose();
     }
 
