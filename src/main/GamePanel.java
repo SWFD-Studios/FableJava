@@ -58,6 +58,10 @@ public class GamePanel extends JPanel implements Runnable{
             //long currentTime2 = System.currentTimeMillis();
             System.out.println("current Time:"+currentTime);*/
             // System.out.println("The game loop is running.");
+            //first method for fps= sleep
+            double drawInterval = (double) 1000000000 /FPS; //For 60FPS= 0.166666 seconds per frame
+            double nextDrawTime = System.nanoTime() + drawInterval;
+
 
             // 1 UPDATE: update information such as character position
             update();
@@ -65,6 +69,16 @@ public class GamePanel extends JPanel implements Runnable{
             // 2 Draw: draw the screen with the updated information
             repaint();
 
+            try {
+                double remainingTime =  nextDrawTime - System.nanoTime();
+                remainingTime = remainingTime / 1000000;
+                Thread.sleep((long) remainingTime);
+                if(remainingTime<0){
+                    remainingTime = 0;
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
         }
         //Game LOOP
