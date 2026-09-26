@@ -70,21 +70,24 @@ public class GamePanel extends JPanel implements Runnable{
 
         g2.setColor(Color.black);
 
-        int x = 0;
-        int y = 0;
-        boolean start = true;
-        int size = 24;
-        while (start){
-            if(x>screenWidth)
-            {x=0; y++;}
-            if(y>screenHeight)
-            {start=false;x=0;y=0;}
-            if(x%2==0&&y%2==0 || x%2==1&&y%2==1){
-                    g2.fillRect(x*size,y*size, size, size);
-            }
-            x++;
-
-        }
+//        int x = 0;
+//        int y = 0;
+//        boolean start = true;
+//        int size = 24;
+//        int o = 0;
+//        while (start){
+//            if(x>screenWidth)
+//            {x=0; y++;}
+//            if(y>screenHeight)
+//            {start=false;x=0;y=0;}
+//            if(x%2==0&&y%2==0 || x%2==(1-o)&&y%2==1){
+//                    g2.fillRect(x*size,y*size, size, size);
+//            }
+//            x++;
+//
+//
+//        }
+//        if(o==1){o=0;}else{o=1;}
         g2.dispose();
     }
 
