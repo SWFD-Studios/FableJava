@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import java.io.Console;
 
 public class GamePanel extends JPanel implements Runnable{
     //Screen settings
@@ -46,6 +47,8 @@ public class GamePanel extends JPanel implements Runnable{
     // The Following is the GameLoop
     @Override
     public void run()
+    /*
+Sleep method:
     {
 
         //Logs
@@ -56,7 +59,7 @@ public class GamePanel extends JPanel implements Runnable{
         {
             /*long currentTime = System.nanoTime();
             //long currentTime2 = System.currentTimeMillis();
-            System.out.println("current Time:"+currentTime);*/
+            System.out.println("current Time:"+currentTime);* /
             // System.out.println("The game loop is running.");
             //first method for fps= sleep
             double drawInterval = (double) 1000000000 /FPS; //For 60FPS= 0.166666 seconds per frame
@@ -76,6 +79,8 @@ public class GamePanel extends JPanel implements Runnable{
                 if(remainingTime<0){
                     remainingTime = 0;
                 }
+
+                nextDrawTime +=drawInterval;
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -84,6 +89,52 @@ public class GamePanel extends JPanel implements Runnable{
         //Game LOOP
 
 
+    }
+*/
+    //Delta/ Accumulator method
+    //public void run()
+    {
+        //Logs
+        System.out.println("The game loop has been triggered.");
+
+
+        double drawInterval = (double) 1000000000 /FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+
+        //Check FPS
+        long timer= 0;
+        int drawCount =0;
+
+
+        while (gameThread != null) {
+
+
+            currentTime = System.nanoTime();
+            delta += ( currentTime - lastTime ) / drawInterval;
+            timer += ( currentTime - lastTime );
+            lastTime = currentTime;
+
+//            System.out.println(delta);
+            if (delta>=1)
+            {
+                // 1 UPDATE: update information such as character position
+                update();
+                // 2 Draw: draw the screen with the updated information
+                repaint();
+
+                delta--;
+                drawCount++;
+            }
+
+            if (timer >= 1000000000)
+            {
+                System.out.println("FPS: "+ drawCount);
+                drawCount =0;
+                timer =0;
+            }
+        }
     }
 
     public void update()
@@ -112,7 +163,6 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
-
         g2.setColor(Color.black);
 
 //        int x = 0;
