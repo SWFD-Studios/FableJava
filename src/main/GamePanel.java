@@ -1,6 +1,7 @@
 package main;
 
 import entity.Player;
+import tile.TileManager;
 
 import javax.swing.JPanel;
 import java.awt.*;
@@ -12,24 +13,25 @@ public class GamePanel extends JPanel implements Runnable{
     final int scale = 2;
 
     public final int tileSize = originalTileSize * scale; //48x48
-    final int maxScreenCol = 40;
-    final int maxScreenRow = 22;
-    final int screenWidth = tileSize * maxScreenCol;
-    final int screenHeight =  tileSize * maxScreenRow;
+    public final int maxScreenCol = 40;
+    public final int maxScreenRow = 22;
+    public final int screenWidth = tileSize * maxScreenCol;
+    public final int screenHeight =  tileSize * maxScreenRow;
 
     //Frames per Second
     int FPS = 60;
 
 
+    TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
 
     Thread gameThread;
     Player player = new Player(this, keyH);
 
     //Set player's default position
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 4;
+//    int playerX = 100;
+//    int playerY = 100;
+//    int playerSpeed = 4;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -125,6 +127,8 @@ Sleep method:
                 update();
                 // 2 Draw: draw the screen with the updated information
                 repaint();
+//                // 3: log
+//                System.out.println("the coordinates: x:" +player.x+ " y:"+ player.y);
 
                 delta--;
                 drawCount++;
@@ -169,6 +173,8 @@ Sleep method:
 //
 //        }
 //        if(o==1){o=0;}else{o=1;}
+        tileM.draw(g2);
+
         player.draw(g2);
 
     }
