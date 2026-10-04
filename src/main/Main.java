@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String f0034 = "My 2d Game"; //Title
+        String f0034 = "FableJava"; //Title
 
 
         //window
