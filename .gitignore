@@ -34,3 +34,6 @@ bin/
 /res/player/
 /res/tiles/
 
+/docs/node_modules
+/docs/dist
+/docs/.cache
