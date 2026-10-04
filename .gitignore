@@ -34,6 +34,3 @@ bin/
 /res/player/
 /res/tiles/
 
-## Tools ##
-/tools/
-/generateNewWorldmap.sh
