@@ -12,11 +12,19 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 16; //16x16 tile
     final int scale = 2;
 
-    public final int tileSize = originalTileSize * scale; //48x48
+    public final int tileSize = originalTileSize * scale; //32x32
     public final int maxScreenCol = 40;
     public final int maxScreenRow = 22;
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight =  tileSize * maxScreenRow;
+
+
+    // WORLD SETTINGS
+
+    public final int maxWorldCol =1000;
+    public final int maxWorldRow = 1000;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
 
     //Frames per Second
     int FPS = 60;
@@ -26,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH = new KeyHandler();
 
     Thread gameThread;
-    Player player = new Player(this, keyH);
+    public Player player = new Player(this, keyH);
 
     //Set player's default position
 //    int playerX = 100;
@@ -128,7 +136,7 @@ Sleep method:
                 // 2 Draw: draw the screen with the updated information
                 repaint();
 //                // 3: log
-//                System.out.println("the coordinates: x:" +player.x+ " y:"+ player.y);
+//                System.out.println("the coordinates: worldX:" +player.worldX+ " worldY:"+ player.worldY);
 
                 delta--;
                 drawCount++;
@@ -155,20 +163,20 @@ Sleep method:
         Graphics2D g2 = (Graphics2D)g;
         g2.setColor(Color.black);
 
-//        int x = 0;
-//        int y = 0;
+//        int worldX = 0;
+//        int worldY = 0;
 //        boolean start = true;
 //        int size = 24;
 //        int o = 0;
 //        while (start){
-//            if(x>screenWidth)
-//            {x=0; y++;}
-//            if(y>screenHeight)
-//            {start=false;x=0;y=0;}
-//            if(x%2==0&&y%2==0 || x%2==(1-o)&&y%2==1){
-//                    g2.fillRect(x*size,y*size, size, size);
+//            if(worldX>screenWidth)
+//            {worldX=0; worldY++;}
+//            if(worldY>screenHeight)
+//            {start=false;worldX=0;worldY=0;}
+//            if(worldX%2==0&&worldY%2==0 || worldX%2==(1-o)&&worldY%2==1){
+//                    g2.fillRect(worldX*size,worldY*size, size, size);
 //            }
-//            x++;
+//            worldX++;
 //
 //
 //        }

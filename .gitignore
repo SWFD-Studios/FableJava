@@ -29,5 +29,11 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+## Work in progress ##
 /res/player/
 /res/tiles/
+
+## Tools ##
+/tools/
+/generateNewWorldmap.sh

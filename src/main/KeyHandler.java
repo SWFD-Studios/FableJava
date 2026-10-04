@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean reset;
+    public boolean speedPlus, speedMinus;
     @Override
     public void keyTyped(KeyEvent e) {//Not needed
     }
@@ -25,6 +27,18 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_D){
             rightPressed = true;
+        }
+        //Speed adjustment
+        if (code == KeyEvent.VK_L){
+            speedPlus = true;
+        }
+        if (code == KeyEvent.VK_K){
+            speedMinus=true;
+        }
+
+        //default Reset
+        if (code == KeyEvent.VK_R){
+            reset = true;
         }
     }
 

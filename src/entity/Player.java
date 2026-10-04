@@ -14,10 +14,17 @@ public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
 
+    public final int screenX;
+    public final int screenY;
+
+
     public Player(GamePanel gp, KeyHandler keyH){
 
         this.gp = gp;
         this.keyH = keyH;
+
+        screenX = gp.screenWidth/2 -(gp.tileSize/2);
+        screenY = gp.screenHeight/2 -(gp.tileSize/2);
 
         setDefaultValues();
         getPlayerImage();
@@ -42,13 +49,14 @@ public class Player extends Entity {
 
     public void setDefaultValues(){
 
-        x=100;
+        worldX =500*gp.tileSize;
 
-        y=100;
+        worldY =500*gp.tileSize;
 
         speed=4;
         direction="down";
     }
+
     public void update(){
 
         if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
@@ -56,17 +64,19 @@ public class Player extends Entity {
 
             if (keyH.upPressed == true) {
                 direction = "up";
-                y -= speed;
+                worldY -= speed;
             } else if (keyH.downPressed == true) {
                 direction = "down";
-                y += speed;
+                worldY += speed;
             } else if (keyH.leftPressed == true) {
                 direction = "left";
-                x -= speed;
+                worldX -= speed;
             } else if (keyH.rightPressed == true) {
                 direction = "right";
-                x += speed;
+                worldX += speed;
             }
+
+
 
 
             if (spriteCounter > 10) {
@@ -78,11 +88,28 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
         }
+
+        //Speed adjustments
+        if (keyH.speedPlus){
+            keyH.speedPlus=false;
+            speed++;
+            System.out.println("Speed is now " + speed);
+        } else if (keyH.speedMinus){
+            keyH.speedMinus=false;
+            speed--;
+            System.out.println("Speed is now " + speed);
+        }
+
+        if(keyH.reset){
+            speed=2;
+            keyH.reset =false;
+        }
+
     }
 
     public void draw(Graphics2D g2){
 
-//        g2.fillRect(x,y, gp.tileSize, gp.tileSize);
+//        g2.fillRect(worldX,worldY, gp.tileSize, gp.tileSize);
 //        g2.dispose();
         BufferedImage image = null;
 
@@ -122,7 +149,7 @@ public class Player extends Entity {
                 break;
         }
 
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
     }
 }

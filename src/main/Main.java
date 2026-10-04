@@ -17,6 +17,7 @@ public class Main {
         window.setTitle(f0034);
 
 
+
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
 
