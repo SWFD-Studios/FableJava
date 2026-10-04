@@ -2,6 +2,7 @@ package tile;
 
 import main.GamePanel;
 
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -11,6 +12,7 @@ import java.io.InputStreamReader;
 
 public class TileManager {
     GamePanel gp;
+
     Tile[] tile;
     int mapTileNum[][];
 
@@ -70,11 +72,17 @@ public class TileManager {
                     int num = Integer.parseInt(numbers[col]);
 
                     mapTileNum[col][row] = num;
+//                    System.out.println("Map load:"+ "Col "+ col+ ",Row "+row+" is loaded. ");
+//                    System.out.println("Col "+col+": "+((double) col*100/gp.maxWorldCol)+"% done");
                     col++;
                 }
                 if (col == gp.maxWorldCol){
                     col=0;
                     row++;
+                    if(true){
+                        System.out.println("Row "+row+": "+((double) row*100/gp.maxWorldRow)+"% done");
+                    }
+
                 }
             }
             br.close();

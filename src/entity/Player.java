@@ -3,6 +3,7 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -150,6 +151,8 @@ public class Player extends Entity {
         }
 
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
-
+        if(true) {
+            g2.drawString("x:" + worldX + ",y:" + worldY, gp.tileSize / 2, gp.tileSize / 2);
+        }
     }
 }
