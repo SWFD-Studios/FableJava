@@ -36,6 +36,8 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public Player player = new Player(this, keyH);
 
+    public CollisionChecker cChecker = new CollisionChecker(this);
+
     //Set player's default position
 //    int playerX = 100;
 //    int playerY = 100;

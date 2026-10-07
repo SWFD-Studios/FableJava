@@ -27,6 +27,12 @@ public class Player extends Entity {
         screenX = gp.screenWidth/2 -(gp.tileSize/2);
         screenY = gp.screenHeight/2 -(gp.tileSize/2);
 
+        solidArea = new Rectangle();
+        solidArea.x = 7;
+        solidArea.y = 11;
+        solidArea.height = 22; //gp tile size is 32
+        solidArea.width= 20;
+
         setDefaultValues();
         getPlayerImage();
     }
@@ -76,6 +82,10 @@ public class Player extends Entity {
                 direction = "right";
                 worldX += speed;
             }
+
+
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
 
 
 
