@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commit b13043a - FableJava</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+<div class="container">
+  <h1>FableJava - Update Log</h1>
+  <div class="badge">Commit: b13043a64744465b237e6bc5bd476854cfed5fa1</div>
+
+  <p>Welcome to the update documentation page for our narrative game engine project, maintained by <span class="author">u/SWFDtf</span>.</p>
+
+  <h2>Recent Changes: Collision Detection</h2>
+  <p><strong>Log:</strong> Added collision detection for specific tiles so that it can be blocked.</p>
+
+  <p>This update introduces tile-based blocking to restrict player and entity movement across the map. Key components affected by this change include:</p>
+  <ul>
+    <li><strong>Entity Updates:</strong> Core entities now track their solid areas and collision states via <code>Entity.class</code>.</li>
+    <li><strong>Collision Logic:</strong> The newly implemented <code>CollisionChecker.class</code> calculates boundaries and prevents movement through restricted spaces.</li>
+    <li><strong>Tile Management:</strong> Individual map tiles now have a boolean collision property managed within <code>Tile.class</code> to determine if they are passable or solid.</li>
+  </ul>
+
+  <h2>Current Status & Next Steps</h2>
+  <p>The project is currently under active initial development. Our immediate focus includes:</p>
+  <ul>
+    <li>Designing the core application layout and rendering structure.</li>
+    <li>Implementing state management and core game logic.</li>
+  </ul>
+</div>
+</body>
+</html>
